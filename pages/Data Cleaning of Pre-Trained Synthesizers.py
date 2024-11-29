@@ -68,29 +68,29 @@ option = st.selectbox(
     (finlbls["label"].to_list()),
 )
 
-new_title8 = '<p style="font-family:sans-serif; color:rgb(255, 255, 255); font-size: 20px;"><b>Which Pre-Trained Synthesizer Would You Like to View Detailed Metrics On?</b></p>'
-st.markdown(new_title8, unsafe_allow_html=True)
-option1 = st.selectbox(
-    "",
-    ("-","Variation Autoencoder","Generative Adversarial Network"),
-)
+# new_title8 = '<p style="font-family:sans-serif; color:rgb(255, 255, 255); font-size: 20px;"><b>Which Pre-Trained Synthesizer Would You Like to View Detailed Metrics On?</b></p>'
+# st.markdown(new_title8, unsafe_allow_html=True)
+# option1 = st.selectbox(
+#     "",
+#     ("-","Variation Autoencoder","Generative Adversarial Network"),
+# )
 
 finlbls = finlbls["label"].to_list()
 to_p = finlbls.index(str(option))
 to_p = to_p-1
-if option1 == "Variation Autoencoder":
-    st.image('VAE/pre_clean_metrics/dist'+str(to_p)+'.png')
-    st.image('VAE/pre_clean_metrics/mean'+str(to_p)+'.png')
-    st.image('VAE/pre_clean_metrics/std'+str(to_p)+'.png')
-    st.image('VAE/post_clean_metrics/dist'+str(to_p)+'.png')
-    st.image('VAE/post_clean_metrics/mean'+str(to_p)+'.png')
-    st.image('VAE/post_clean_metrics/std'+str(to_p)+'.png')
-if option1 == "Generative Adversarial Network":
-    st.image('GAN/pre_clean_metrics/dist'+str(to_p)+'.png')
-    st.image('GAN/pre_clean_metrics/mean'+str(to_p)+'.png')
-    st.image('GAN/pre_clean_metrics/std'+str(to_p)+'.png')
-    st.image('GAN/post_clean_metrics/dist'+str(to_p)+'.png')
-    st.image('GAN/post_clean_metrics/mean'+str(to_p)+'.png')
-    st.image('GAN/post_clean_metrics/std'+str(to_p)+'.png')
-if option1 == "-":
-    print()
+# if option1 == "Variation Autoencoder":
+st.image('VAE/pre_clean_metrics/dist'+str(to_p)+'.png')
+st.image('VAE/pre_clean_metrics/mean'+str(to_p)+'.png')
+st.image('VAE/pre_clean_metrics/std'+str(to_p)+'.png')
+st.image('VAE/post_clean_metrics/dist'+str(to_p)+'.png')
+st.image('VAE/post_clean_metrics/mean'+str(to_p)+'.png')
+st.image('VAE/post_clean_metrics/std'+str(to_p)+'.png')
+# if option1 == "Generative Adversarial Network":
+st.image('GAN/pre_clean_metrics/dist'+str(to_p)+'.png')
+st.image('GAN/pre_clean_metrics/mean'+str(to_p)+'.png')
+st.image('GAN/pre_clean_metrics/std'+str(to_p)+'.png')
+st.image('GAN/post_clean_metrics/dist'+str(to_p)+'.png')
+st.image('GAN/post_clean_metrics/mean'+str(to_p)+'.png')
+st.image('GAN/post_clean_metrics/std'+str(to_p)+'.png')
+# if option1 == "-":
+#     print()
