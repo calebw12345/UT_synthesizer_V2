@@ -143,7 +143,7 @@ def train_model(data,numoption):
 
 if 'ok_a' not in st.session_state:
     st.session_state.ok_a = False
-numoption = st.text_input("Input the Number of A-scans That You Want to Synthesize:", 1)
+numoption = st.text_input("Input the Number of A-scans That You Want to Synthesize (must be greater than 1):", 10)
 # A upload
 with st.expander("Upload A NPY File"):
     uploaded_file = st.file_uploader("Upload A NPY", type=["npy"])
