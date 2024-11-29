@@ -83,7 +83,7 @@ st.markdown(new_title8, unsafe_allow_html=True)
 totscans = st.text_input("", 2)
 totscans = int(totscans)
 if st.button('Change A-scan in View'):
-  ascan_num = random.randint(1, totscans-1)
+  ascan_num = random.randint(1, totscans)
 
 
 def generate_synthetic_data(path,binnumber):
