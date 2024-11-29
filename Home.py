@@ -45,7 +45,7 @@ st.write("UT data is not easy to come by. There are primarily only 2 ways to acq
 new_title2 = '<p style="font-family:sans-serif; color:rgb(0, 153, 0); font-size: 28px;">Capability of the UT Data Synthesizer</p>'
 st.markdown(new_title2, unsafe_allow_html=True)
 st.write("This application allows you to synthesize any type of UT amplitude scans that you desire a larger quantity of unique data for, along a number of post processing and visualiztion tools that can be used to examine the synthetic data's level of realism. There are also pre-built synthesizers in this application that are able to produce amplitude scans data of flaw type corrosion and uncorroded backwall of an aluminum component .75 inches (19.05mm) in thickness. This application supplies over 40 models that can synthesize corrosion of through-wall ranging from 66% to 2%, as well uncorroded material.")
-st.sidebar.image('supporting_images\logo_green.png', use_column_width=True)
+st.sidebar.image('supporting_images/logo_green.png', use_column_width=True)
 st.write("Interact with the tabs on the left side of the screen to explore the functionalities of this application.")
 
 
