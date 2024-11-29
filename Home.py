@@ -29,7 +29,7 @@ import time
 # st.components.v1.html(custom_html)
 
 # st.set_page_config(layout="wide")
-st.image("logo.png")
+st.image("supporting_images/logo.png")
 
 # Sidebar content
 # st.sidebar.header("Sidebar Title")
