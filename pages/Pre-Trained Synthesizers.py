@@ -14,7 +14,7 @@ from matplotlib.ticker import PercentFormatter
 import random
 
 st.set_page_config(layout="wide")
-st.sidebar.image(r'C:\Users\caleb\Documents\5122\week8lab\pages_demo\logo_green.png', use_column_width=True)
+st.sidebar.image('supporting_images\logo_green.png', use_column_width=True)
 
 bins = [
     {"label": "Bin-1: 0% Backwall", "start": 0, "end": 1999, "samples": 2000},
@@ -65,7 +65,7 @@ st.title("Pre-Trained Synthesizers")
 ascan_num = 1
 
 st.write("If you do not want to synthesize your own custom datatype, or if you would like to view the level of realism in the A-scans of models that have already been trained, then feel free to interact with our pretrained models below! These models will produce A-scans of corrosion flaw type, and uncorroded backwall. In the instance of both corrosion and backwall, the synthesizers are attempting to produce data from a planar component of aluminum material type, .75 inches (19.05mm) in thickness. There are 42 synthesizers total; one synthesizer for backwall and 41 synthesizers for corrosion of through-wall 66% to 2%. Refer to the image below for an explanation of through-wall. Each corrosion synthesizer will produce data of its corresponding through-wall range. Every corrosion synthesizer produces A-scans of a 1.5% through-wall range.")
-st.image(r'C:\Users\caleb\Documents\5122\week8lab\pages_demo\remligfigure.png')
+st.image('supporting_images\remligfigure.png')
 st.write("(Image Above Found on https://www.epri.com/research/products/000000003002031138)")
 
 new_title3 = '<p style="font-family:sans-serif; color:rgb(0, 153, 0); font-size: 32px;"><b>Pre-Trained Synthesizer Instructions</b></p>'
@@ -121,7 +121,7 @@ def generate_synthetic_data(path,binnumber):
   st.pyplot(fig)
 
 
-  data = np.load(r'C:\Users\caleb\Documents\5122\week8lab\brinda\real_data_by_bin\bin'+str(binnumber)+'.npy')
+  data = np.load('real_data_by_bin\bin'+str(binnumber)+'.npy')
   data = data/np.max(data)
   realmean = np.mean(abs(data), axis=0)
   synmean = np.mean(abs(synthetic_datanp), axis=0)
@@ -177,7 +177,7 @@ def generate_synthetic_data(path,binnumber):
   ax4.set_ylabel("Count")
   st.pyplot(fig1)
   st.pyplot(fig2)
-  st.image(r'C:\Users\caleb\Documents\5122\week8lab\brinda\VAE\post_clean_metrics\dist'+str(binnumber)+".png")
+  st.image('VAE\post_clean_metrics\dist'+str(binnumber)+".png")
   # st.pyplot(fig3)
   st.pyplot(fig4)
   
@@ -232,7 +232,7 @@ def generate_synthetic_data_gan(path,binnumber):
   st.pyplot(fig)
 
 
-  data = np.load(r'C:\Users\caleb\Documents\5122\week8lab\brinda\real_data_by_bin\bin'+str(binnumber)+'.npy')
+  data = np.load('real_data_by_bin\bin'+str(binnumber)+'.npy')
   data = data/np.max(data)
   realmean = np.mean(abs(data), axis=0)
   synmean = np.mean(abs(synthetic_datanp), axis=0)
@@ -289,7 +289,7 @@ def generate_synthetic_data_gan(path,binnumber):
   ax4.set_ylabel("Count")
   st.pyplot(fig1)
   st.pyplot(fig2)
-  st.image(r'C:\Users\caleb\Documents\5122\week8lab\brinda\GAN\post_clean_metrics\dist'+str(binnumber)+".png")
+  st.image('GAN\post_clean_metrics\dist'+str(binnumber)+".png")
   # st.pyplot(fig3)
   st.pyplot(fig4)
   
@@ -325,9 +325,9 @@ if str(model_option) == "Generative Adversarial Network":
       if to_p == -1:
          print()
       else:
-        path = r'C:\Users\caleb\Documents\5122\week8lab\brinda\GAN\GAN_pretrained\gen'+str(to_p)+'.pth'
+        path = 'GAN\GAN_pretrained\gen'+str(to_p)+'.pth'
         generate_synthetic_data_gan(path,int(to_p))
-        st.image(r"C:\Users\caleb\Documents\5122\week8lab\brinda\GAN\GAN_pretrained\lossplot_GAN_bin"+str(to_p)+".png")
+        st.image('GAN\GAN_pretrained\lossplot_GAN_bin'+str(to_p)+'.png')
 
 
 
@@ -339,7 +339,7 @@ if str(model_option) == "Variation Autoencoder":
       if to_p == -1:
          print()
       else:
-        path = r'C:\Users\caleb\Documents\5122\week8lab\brinda\VAE\VAE_pretrained\backwall_vae_'+str(to_p)+'.pth'
+        path = 'VAE\VAE_pretrained\backwall_vae_'+str(to_p)+'.pth'
         generate_synthetic_data(path,int(to_p))
-        st.image(r"C:\Users\caleb\Documents\5122\week8lab\brinda\VAE\VAE_pretrained\lossplot_bin"+str(to_p)+".png")
+        st.image('VAE\VAE_pretrained\lossplot_bin'+str(to_p)+'.png')
         
