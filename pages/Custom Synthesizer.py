@@ -13,7 +13,7 @@ from matplotlib.ticker import PercentFormatter
 import random
 
 st.set_page_config(layout="wide")
-st.sidebar.image(r'C:\Users\caleb\Documents\5122\week8lab\pages_demo\logo_green.png', use_column_width=True)
+st.sidebar.image('supporting_images\logo_green.png', use_column_width=True)
 
 st.title("Please Upload The Type of Data That You Want to Synthesize Here (must be in .npy file format):")
 
