@@ -179,7 +179,7 @@ def generate_synthetic_data(path,binnumber):
   st.image('VAE/post_clean_metrics/dist'+str(binnumber)+".png")
   # st.pyplot(fig3)
   st.pyplot(fig4)
-  
+  return synthetic_data
 
 # Generator Model
 class Generator(nn.Module):
@@ -291,7 +291,7 @@ def generate_synthetic_data_gan(path,binnumber):
   st.image('GAN/post_clean_metrics/dist'+str(binnumber)+".png")
   # st.pyplot(fig3)
   st.pyplot(fig4)
-  
+  return synthetic_data
 
 b = pd.DataFrame(bins)
 b = b["label"]
@@ -325,7 +325,18 @@ if str(model_option) == "Generative Adversarial Network":
          print()
       else:
         path = 'GAN/GAN_pretrained/gen'+str(to_p)+'.pth'
-        generate_synthetic_data_gan(path,int(to_p))
+        synthetic_data = generate_synthetic_data_gan(path,int(to_p))
+                  # Convert DataFrame to CSV
+        synthetic_data = pd.DataFrame(synthetic_data)
+        csv_data = synthetic_data.to_csv(index=False)
+
+        # Add download button
+        st.download_button(
+            label="Download DataFrame as CSV",
+            data=csv_data,
+            file_name="example_dataframe.csv",
+            mime="text/csv"
+        )
         st.image('GAN/GAN_pretrained/lossplot_GAN_bin'+str(to_p)+'.png')
 
 
@@ -339,6 +350,18 @@ if str(model_option) == "Variation Autoencoder":
          print()
       else:
         path = 'VAE/VAE_pretrained/backwall_vae_'+str(to_p)+'.pth'
-        generate_synthetic_data(path,int(to_p))
+        synthetic_data = generate_synthetic_data(path,int(to_p))
+        synthetic_data = pd.DataFrame(synthetic_data)
+
+                  # Convert DataFrame to CSV
+        csv_data = synthetic_data.to_csv(index=False)
+
+        # Add download button
+        st.download_button(
+            label="Download DataFrame as CSV",
+            data=csv_data,
+            file_name="example_dataframe.csv",
+            mime="text/csv"
+        )
         st.image('VAE/VAE_pretrained/lossplot_bin'+str(to_p)+'.png')
         
