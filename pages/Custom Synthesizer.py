@@ -207,6 +207,15 @@ try:
     synthetic_data = pd.DataFrame(synthetic_data)
 
     x = synthetic_data.iloc[ascan_num,:]
+    synthetic_data = pd.DataFrame(synthetic_data)
+    synthetic_data = synthetic_data.to_csv()
+    synthetic_data = pd.DataFrame(synthetic_data)
+        st.download_button(
+            label="Download DataFrame as CSV",
+            data=csv_data,
+            file_name="example_dataframe.csv",
+            mime="text/csv"
+        )
     micros = np.arange(1300)
     micros = micros/100
     fig, ax = plt.subplots(figsize=(5, 5))
