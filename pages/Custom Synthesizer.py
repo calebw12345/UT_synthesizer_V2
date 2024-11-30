@@ -209,7 +209,6 @@ try:
     x = synthetic_data.iloc[ascan_num,:]
     synthetic_data = pd.DataFrame(synthetic_data)
     synthetic_data = synthetic_data.to_csv()
-    synthetic_data = pd.DataFrame(synthetic_data)
     st.download_button(
         label="Download DataFrame as CSV",
         data=csv_data,
