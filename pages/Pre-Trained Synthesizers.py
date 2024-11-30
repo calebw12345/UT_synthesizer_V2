@@ -330,14 +330,14 @@ if str(model_option) == "Generative Adversarial Network":
         synthetic_data = pd.DataFrame(synthetic_data)
         csv_data = synthetic_data.to_csv(index=False)
 
-        # Add download button
+        st.image('GAN/GAN_pretrained/lossplot_GAN_bin'+str(to_p)+'.png')
+                  # Add download button
         st.download_button(
             label="Download DataFrame as CSV",
             data=csv_data,
             file_name="example_dataframe.csv",
             mime="text/csv"
         )
-        st.image('GAN/GAN_pretrained/lossplot_GAN_bin'+str(to_p)+'.png')
 
 
 
@@ -356,12 +356,12 @@ if str(model_option) == "Variation Autoencoder":
                   # Convert DataFrame to CSV
         csv_data = synthetic_data.to_csv(index=False)
 
-        # Add download button
+        st.image('VAE/VAE_pretrained/lossplot_bin'+str(to_p)+'.png')
+                  # Add download button
         st.download_button(
             label="Download DataFrame as CSV",
             data=csv_data,
             file_name="example_dataframe.csv",
             mime="text/csv"
         )
-        st.image('VAE/VAE_pretrained/lossplot_bin'+str(to_p)+'.png')
         
