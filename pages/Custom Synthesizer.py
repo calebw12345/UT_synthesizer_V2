@@ -212,7 +212,7 @@ try:
     fig, ax = plt.subplots(figsize=(5, 5))
     ax.set_title("Synthetic A-scan #"+str(ascan_num)+" of "+str(len(synthetic_data)))
     ax.set_ylabel("Normalized Amplitude")
-    ax.set_xlabel("Microseconds")
+    ax.set_xlabel("Microseconds HEYYYYY")
     ax.plot(micros,x)
     st.pyplot(fig)
 except (TypeError,NameError)  as e:
