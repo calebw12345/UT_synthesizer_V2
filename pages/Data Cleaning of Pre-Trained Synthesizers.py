@@ -7,6 +7,8 @@ from torch.utils.data import DataLoader, TensorDataset
 import pandas as pd
 import streamlit as st
 st.title("Metrics of Pre-Trained Synthesizers")
+st.set_page_config(layout="wide")
+st.sidebar.image('supporting_images/logo_green.png', use_column_width=True)
 st.write("All pre-traind synthesizers in this application required data cleaning practices. Outlier removal was the primary practice. For each synthesizer that was trained, a dynamic outlier threshold (indicated by 'upper threshold' in the plots below) was set to determine which datapoints in the training data needed to be removed prior to training the synthesizer.")
 bins = [
     {"label": "Bin-1: 0% Backwall", "start": 0, "end": 1999, "samples": 2000},
