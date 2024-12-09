@@ -7,7 +7,7 @@ from torch.utils.data import DataLoader, TensorDataset
 import pandas as pd
 import streamlit as st
 st.title("Metrics of Pre-Trained Synthesizers")
-st.set_page_config(layout="wide")
+# st.set_page_config(layout="wide")
 st.sidebar.image('supporting_images/logo_green.png', use_column_width=True)
 st.write("All pre-traind synthesizers in this application required data cleaning practices. Outlier removal was the primary practice. For each synthesizer that was trained, a dynamic outlier threshold (indicated by 'upper threshold' in the plots below) was set to determine which datapoints in the training data needed to be removed prior to training the synthesizer.")
 bins = [
@@ -70,13 +70,6 @@ option = st.selectbox(
     (finlbls["label"].to_list()),
 )
 
-# new_title8 = '<p style="font-family:sans-serif; color:rgb(255, 255, 255); font-size: 20px;"><b>Which Pre-Trained Synthesizer Would You Like to View Detailed Metrics On?</b></p>'
-# st.markdown(new_title8, unsafe_allow_html=True)
-# option1 = st.selectbox(
-#     "",
-#     ("-","Variation Autoencoder","Generative Adversarial Network"),
-# )
-
 finlbls = finlbls["label"].to_list()
 to_p = finlbls.index(str(option))
 to_p = to_p-1
@@ -90,12 +83,3 @@ else:
     st.image('VAE/post_clean_metrics/dist'+str(to_p)+'.png')
     st.image('VAE/post_clean_metrics/mean'+str(to_p)+'.png')
     st.image('VAE/post_clean_metrics/std'+str(to_p)+'.png')
-# if option1 == "Generative Adversarial Network":
-# st.image('GAN/pre_clean_metrics/dist'+str(to_p)+'.png')
-# st.image('GAN/pre_clean_metrics/mean'+str(to_p)+'.png')
-# st.image('GAN/pre_clean_metrics/std'+str(to_p)+'.png')
-# st.image('GAN/post_clean_metrics/dist'+str(to_p)+'.png')
-# st.image('GAN/post_clean_metrics/mean'+str(to_p)+'.png')
-# st.image('GAN/post_clean_metrics/std'+str(to_p)+'.png')
-# if option1 == "-":
-#     print()
