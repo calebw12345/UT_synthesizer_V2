@@ -1,6 +1,3 @@
-# python3 -m venv venv
-# source venv/bin/activate
-
 import streamlit as st
 import torch
 import torch.nn as nn
@@ -161,7 +158,7 @@ try:
     synthetic_data = pd.DataFrame(synthetic_data)
 
     x = synthetic_data.iloc[ascan_num,:]
-    micros = np.arange(len(synthetic_data))
+    micros = np.arange(synthetic_data.shape[1])
     micros = micros/100
     fig, ax = plt.subplots(figsize=(5, 5))
     ax.set_title("Synthetic A-scan #"+str(ascan_num)+" of "+str(len(synthetic_data)))
@@ -174,7 +171,7 @@ try:
     
     # Add download button
     st.download_button(
-        label="Download DataFrame as CSV",
+        label="Download Data as CSV",
         data=csv_data,
         file_name="custom_synthesized_data.csv",
         mime="text/csv"
