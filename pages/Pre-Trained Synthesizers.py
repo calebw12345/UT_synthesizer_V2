@@ -24,7 +24,7 @@ if 'ascan_num' not in st.session_state:
     st.session_state['ascan_num'] = 1
 
 @st.cache_data
-def initialize_page()
+def initialize_page():
     bins = [
         {"label": "Bin-1: 0% Backwall", "start": 0, "end": 1999, "samples": 2000},
         {"label": "Bin-2: 67.64% to 66.02%", "start": 2000, "end": 2999, "samples": 1000},
