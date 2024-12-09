@@ -6,8 +6,8 @@ import matplotlib.pyplot as plt
 from torch.utils.data import DataLoader, TensorDataset
 import pandas as pd
 import streamlit as st
+st.set_page_config(layout="wide")
 st.title("Metrics of Pre-Trained Synthesizers")
-# st.set_page_config(layout="wide")
 st.sidebar.image('supporting_images/logo_green.png', use_column_width=True)
 
 @st.cache_data
