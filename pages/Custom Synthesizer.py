@@ -199,7 +199,10 @@ with st.expander("Upload A NPY File"):
             # ax.plot(micros,x)
             # st.pyplot(fig)
 try:
-    ascan_num = random.randint(1, len(synthetic_data)-1)
+    if len(synthetic_data) ==1:
+        ascan_num =1
+    else:
+        ascan_num = random.randint(1, len(synthetic_data)-1)
     # if st.button('Change A-scan in View'):
     #     ascan_num = random.randint(1, len(synthetic_data)-1)
         
