@@ -1,4 +1,4 @@
-# Overwatch-2-Statistics
+# The UT Data Synthesizer
 Hello and welcome to the Ultrasonic Testing 9UT) data synthesizer application!
 
 [View the UT Synthesizer Streamlit App here!](https://utsynthesizerv2.streamlit.app/)
