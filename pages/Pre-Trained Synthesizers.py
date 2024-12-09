@@ -125,7 +125,7 @@ def generate_synthetic_data(path,binnumber):
     print(synthetic_data)  # The generated rows
   synthetic_datanp = synthetic_data
   synthetic_data = pd.DataFrame(synthetic_data)
-  x = synthetic_data.iloc[int(ascan_num)-1,:]
+  x = synthetic_data.iloc[int(st.session_state['ascan_num'])-1,:]
   micros = np.arange(1300)
   micros = micros/100
   fig, ax = plt.subplots(figsize=(5, 5))
@@ -229,7 +229,7 @@ def generate_synthetic_data_gan(path,binnumber):
       synthetic_data = vae(noise).cpu().numpy()
   synthetic_datanp = synthetic_data
   synthetic_data = pd.DataFrame(synthetic_data)
-  x = synthetic_data.iloc[int(ascan_num)-1,:]
+  x = synthetic_data.iloc[int(int(st.session_state['ascan_num']))-1,:]
   micros = np.arange(1300)
   micros = micros/100
   fig, ax = plt.subplots(figsize=(5, 5))
