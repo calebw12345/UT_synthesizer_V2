@@ -96,7 +96,7 @@ totscans = st.text_input("", 2)
 totscans = int(totscans)
 st.session_state['totscans'] = totscans
 if st.button('Change A-scan in View'):
-    if st.session_state['option'] == '-' or st.session_state['model_option'] == '-'
+    if st.session_state['option'] == '-' or st.session_state['model_option'] == '-':
         st.write("Please select a model framework, and data type from the two prompts below first.")
     if totscans == 1:
         ascan_num =1
