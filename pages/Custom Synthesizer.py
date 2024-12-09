@@ -20,12 +20,6 @@ st.title("Please Upload The Type of Data That You Want to Synthesize Here (must 
 #Display Message
 st.write("The data you upload will be used to train a machine learning model to synthesize your data. A random A-scan produced by your synthesizer will be shown after the model has finished training.")
 
-# The following code below is assuming your data is stored in a numpy array of shape (2000, 1300)
-# try: 
-#     uploaded_file = st.file_uploader("")
-# except (TypeError,NameError)  as e:
-#     print()
-
 # Define the Variational Autoencoder (VAE)
 class VAE(nn.Module):
     def __init__(self, input_dim, latent_dim):
@@ -72,9 +66,6 @@ class VAE(nn.Module):
 # Loss function (VAE Loss: Reconstruction loss + KL divergence)
 def loss_function(recon_x, x, mean, log_var):
     recon_loss = nn.functional.mse_loss(recon_x, x, reduction='sum')
-    # print("Recon loss for this epoch is "+str(recon_loss))
-    # print("Recon var1 (recon_x): "+str(recon_x))
-    # print("Recon var2 (x): "+str(x))
     kl_div = -0.5 * torch.sum(1 + log_var - mean.pow(2) - log_var.exp())
     return recon_loss + kl_div
 
@@ -114,14 +105,8 @@ def train_model(data,numoption):
         train_loss = 0
         for batch in dataloader:
             x = batch[0]
-            # print("x is: "+str(x))
-            # print("NaNs in x: ", torch.isnan(x).sum().item())  # Check for NaNs
-            # print("Infs in x: ", torch.isinf(x).sum().item())  # Check for infinities
             optimizer.zero_grad()
             recon_x, mean, log_var = vae(x)
-            # print("recon_x: "+str(recon_x))
-            # print("mean: "+str(mean))
-            # print("log_var: "+str(log_var))
             loss = loss_function(recon_x, x, mean, log_var)
             loss.backward()
             torch.nn.utils.clip_grad_norm_(vae.parameters(), max_norm=1.0)
@@ -144,14 +129,14 @@ def train_model(data,numoption):
 if 'ok_a' not in st.session_state:
     st.session_state.ok_a = False
 numoption = st.text_input("Input the Number of A-scans That You Want to Synthesize (must be greater than 1):", 10)
-# A upload
+
+# A file uploader
 with st.expander("Upload A NPY File"):
-    uploaded_file = st.file_uploader("Upload A NPY", type=["npy"])
+    uploaded_file = st.file_uploader("", type=["npy"])
  
     if uploaded_file is not None:
         data = np.load(uploaded_file)
         synthetic_data = train_model(data,numoption)
-        # st.write("You have sucessfully produced "+str(len(synthetic_data))+" Synthetic A-scans")
     
 
         # Check error. 
@@ -164,47 +149,13 @@ with st.expander("Upload A NPY File"):
                 else:
                     st.success("A model has been successfully trained, and you have sucessfully produced "+str(len(synthetic_data))+" Synthetic A-scans!")
                     st.session_state.ok_a = True
-                    # ascan_num = 1
-                    # if st.button('Change A-scan in View'):
-                    #     ascan_num = random.randint(1, len(synthetic_data)-1)
-                        
-                    # ascan_num = int(ascan_num)
-                    # synthetic_data = pd.DataFrame(synthetic_data)
-
-                    # x = synthetic_data.iloc[ascan_num,:]
-                    # micros = np.arange(1300)
-                    # micros = micros/100
-                    # fig, ax = plt.subplots(figsize=(5, 5))
-                    # ax.set_title("Synthetic A-scan #"+str(ascan_num)+" of "+str(len(synthetic_data)))
-                    # ax.set_ylabel("Normalized Amplitude")
-                    # ax.set_xlabel("Microseconds")
-                    # ax.plot(micros,x)
-                    # st.pyplot(fig)
         else:
             st.success("A model has been successfully trained!")
-            # ascan_num = 1
-            # if st.button('Change A-scan in View'):
-            #     ascan_num = random.randint(1, len(synthetic_data)-1)
-                
-            # ascan_num = int(ascan_num)
-            # synthetic_data = pd.DataFrame(synthetic_data)
-
-            # x = synthetic_data.iloc[ascan_num,:]
-            # micros = np.arange(1300)
-            # micros = micros/100
-            # fig, ax = plt.subplots(figsize=(5, 5))
-            # ax.set_title("Synthetic A-scan #"+str(ascan_num)+" of "+str(len(synthetic_data)))
-            # ax.set_ylabel("Normalized Amplitude")
-            # ax.set_xlabel("Microseconds")
-            # ax.plot(micros,x)
-            # st.pyplot(fig)
 try:
     if len(synthetic_data) ==1:
         ascan_num =1
     else:
         ascan_num = random.randint(1, len(synthetic_data)-1)
-    # if st.button('Change A-scan in View'):
-    #     ascan_num = random.randint(1, len(synthetic_data)-1)
         
     ascan_num = int(ascan_num)
     synthetic_data = pd.DataFrame(synthetic_data)
@@ -220,54 +171,3 @@ try:
     st.pyplot(fig)
 except (TypeError,NameError)  as e:
     print()
-
-
-# init_file_name = ''
-# if uploaded_file != None:
-#     if uploaded_file.name[-4:] != ".npy":
-#         st.write("Wrong file type was uploaded")
-#     if init_file_name != uploaded_file.name:
-#         init_file_name = uploaded_file.name
-#         # st.write("Numpy")
-        
-        
-
-# Create a figure and axes
-
-# st.write("You have sucessfully produced "+str(len(synthetic_data))+" Synthetic A-scans")
-# ascan_num = 1
-# ascan_num = int(ascan_num)
-# synthetic_data = pd.DataFrame(synthetic_data)
-# if st.button('Change A-scan in View'):
-#     ascan_num = random.randint(1, len(synthetic_data)-1)
-
-# x = synthetic_data.iloc[ascan_num,:]
-# micros = np.arange(1300)
-# micros = micros/100
-# fig, ax = plt.subplots(figsize=(5, 5))
-# ax.set_title("Synthetic A-scan #"+str(ascan_num)+" of "+str(len(synthetic_data)))
-# ax.set_ylabel("Normalized Amplitude")
-# ax.set_xlabel("Microseconds")
-# ax.plot(micros,x)
-# st.pyplot(fig)
-
-
-
-
-
-
-
-        # def scanthrough(data):
-        # # Create a figure and axes
-        #     fig1, ax1 = plt.subplots(figsize=(5, 5))
-            
-        #     for ascan in range(len(synthetic_data)):
-        #         # Plot some data
-        #         x1 = synthetic_data.iloc[ascan,:]
-        #         ax1.plot(x1)
-        #         st.pyplot(fig1)
-
-                
-        
-        # if st.button('Scroll Through All Synthetic A-scans'):
-        #     scanthrough(synthetic_data)
