@@ -1,5 +1,5 @@
 # The UT Data Synthesizer
-Hello and welcome to the Ultrasonic Testing 9UT) data synthesizer application!
+Hello and welcome to the Ultrasonic Testing (UT) data synthesizer application!
 
 [View the UT Synthesizer Streamlit App here!](https://utsynthesizerv2.streamlit.app/)
 
