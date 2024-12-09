@@ -10,7 +10,7 @@ import pandas as pd
 from matplotlib.ticker import PercentFormatter
 import random
 
-st.set_page_config(layout="center")
+st.set_page_config(layout="centered")
 st.sidebar.image('supporting_images/logo_green.png', use_column_width=True)
 
 # initialize session state
