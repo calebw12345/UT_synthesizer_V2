@@ -130,9 +130,9 @@ def generate_synthetic_data(path,binnumber):
   micros = micros/100
   fig, ax = plt.subplots(figsize=(5, 5))
   if binnumber == 0:
-    ax.set_title("Synthetic A-scan #"+str(ascan_num)+" of "+str(totscans)+" | Type of A-scan:"+lblforplot[9:])
+    ax.set_title("Synthetic A-scan #"+str(st.session_state['ascan_num'])+" of "+str(totscans)+" | Type of A-scan:"+lblforplot[9:])
   else:
-    ax.set_title("Synthetic A-scan #"+str(ascan_num)+" of "+str(totscans)+" | Type of A-scan: "+lblforplot[6:]+" Through-wall Corrosion")
+    ax.set_title("Synthetic A-scan #"+str(st.session_state['ascan_num'])+" of "+str(totscans)+" | Type of A-scan: "+lblforplot[6:]+" Through-wall Corrosion")
   ax.set_ylabel("Normalized Amplitude")
   ax.set_xlabel("Microseconds")
   ax.plot(micros,x)
@@ -234,9 +234,9 @@ def generate_synthetic_data_gan(path,binnumber):
   micros = micros/100
   fig, ax = plt.subplots(figsize=(5, 5))
   if binnumber == 0:
-    ax.set_title("Synthetic A-scan #"+str(ascan_num)+" of "+str(totscans)+" | Type of A-scan:"+lblforplot[9:])
+    ax.set_title("Synthetic A-scan #"+str(st.session_state['ascan_num'])+" of "+str(totscans)+" | Type of A-scan:"+lblforplot[9:])
   else:
-    ax.set_title("Synthetic A-scan #"+str(ascan_num)+" of "+str(totscans)+" | Type of A-scan: "+lblforplot[6:]+" Through-wall Corrosion")
+    ax.set_title("Synthetic A-scan #"+str(st.session_state['ascan_num'])+" of "+str(totscans)+" | Type of A-scan: "+lblforplot[6:]+" Through-wall Corrosion")
   
   ax.set_ylabel("Normalized Amplitude")
   ax.set_xlabel("Microseconds")
