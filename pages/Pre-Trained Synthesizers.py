@@ -94,8 +94,10 @@ totscans = st.text_input("", 2)
 totscans = int(totscans)
 st.session_state['totscans'] = totscans
 if st.button('Change A-scan in View'):
+    
     if totscans == 1:
         ascan_num =1
+        st.write("You only synthesized 1 A-scan! Synthesize more A-scans if you want to view a different A-scan.")
     else:
         ascan_num = random.randint(1, totscans-1)
     st.session_state['ascan_num'] = ascan_num
