@@ -107,7 +107,7 @@ if st.button('Change A-scan in View'):
         ascan_num = random.randint(1, totscans-1)
     st.session_state['ascan_num'] = ascan_num
 
-@st.cache_data
+# @st.cache_data
 def generate_synthetic_data(path,binnumber):
   lblforplot = bins[binnumber]
   lblforplot = str(lblforplot["label"])
@@ -211,7 +211,7 @@ class Generator(nn.Module):
     def forward(self, x):
         return self.model(x)
 
-@st.cache_data
+# @st.cache_data
 def generate_synthetic_data_gan(path,binnumber):
   lblforplot = bins[binnumber]
   lblforplot = str(lblforplot["label"])
