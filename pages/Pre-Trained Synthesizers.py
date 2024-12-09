@@ -16,6 +16,16 @@ import random
 st.set_page_config(layout="wide")
 st.sidebar.image('supporting_images/logo_green.png', use_column_width=True)
 
+# initialize session state
+if 'option' not in st.session_state:
+    st.session_state['option'] = '0'
+if 'model_option' not in st.session_state:
+    st.session_state['model_option'] = '0'
+if 'totscans' not in st.session_state:
+    st.session_state['totscans'] = "-"
+if 'ascan_num' not in st.session_state:
+    st.session_state['ascan_num'] = 1
+
 bins = [
     {"label": "Bin-1: 0% Backwall", "start": 0, "end": 1999, "samples": 2000},
     {"label": "Bin-2: 67.64% to 66.02%", "start": 2000, "end": 2999, "samples": 1000},
@@ -317,6 +327,7 @@ option = st.selectbox(
 finlbls = finlbls["label"].to_list()
 
 if str(model_option) == "Generative Adversarial Network":
+  st.session_state['option'] = option
   for value in finlbls:
     if str(option) == value:
       to_p = finlbls.index(str(option))
@@ -342,6 +353,7 @@ if str(model_option) == "Generative Adversarial Network":
 
 
 if str(model_option) == "Variation Autoencoder":
+  st.session_state['option'] = option
   for value in finlbls:
     if str(option) == value:
       to_p = finlbls.index(str(option))
