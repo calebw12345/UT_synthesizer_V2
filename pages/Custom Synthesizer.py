@@ -161,7 +161,7 @@ try:
     synthetic_data = pd.DataFrame(synthetic_data)
 
     x = synthetic_data.iloc[ascan_num,:]
-    micros = np.arange(1301)
+    micros = np.arange(len(synthetic_data))
     micros = micros/100
     fig, ax = plt.subplots(figsize=(5, 5))
     ax.set_title("Synthetic A-scan #"+str(ascan_num)+" of "+str(len(synthetic_data)))
