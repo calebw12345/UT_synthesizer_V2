@@ -169,5 +169,15 @@ try:
     ax.set_xlabel("Microseconds")
     ax.plot(micros,x)
     st.pyplot(fig)
+    # Convert DataFrame to CSV
+    csv_data = synthetic_data.to_csv(index=False)
+    
+    # Add download button
+    st.download_button(
+        label="Download DataFrame as CSV",
+        data=csv_data,
+        file_name="custom_synthesized_data.csv",
+        mime="text/csv"
+    )
 except (TypeError,NameError)  as e:
     print()
