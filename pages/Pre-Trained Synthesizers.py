@@ -344,7 +344,7 @@ if str(model_option) == "Generative Adversarial Network":
         st.download_button(
             label="Download DataFrame as CSV",
             data=csv_data,
-            file_name="example_dataframe.csv",
+            file_name=str(model_option)+str(option)+"_data.csv",
             mime="text/csv"
         )
 
@@ -372,7 +372,7 @@ if str(model_option) == "Variation Autoencoder":
         st.download_button(
             label="Download DataFrame as CSV",
             data=csv_data,
-            file_name="example_dataframe.csv",
+            file_name=str(model_option)+str(option)+"_data.csv",
             mime="text/csv"
         )
         
