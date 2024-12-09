@@ -92,8 +92,13 @@ new_title8 = '<p style="font-family:sans-serif; color:rgb(255, 255, 255); font-s
 st.markdown(new_title8, unsafe_allow_html=True)
 totscans = st.text_input("", 2)
 totscans = int(totscans)
+st.session_state['totscans'] = totscans
 if st.button('Change A-scan in View'):
-  ascan_num = random.randint(1, totscans)
+    if totscans == 1:
+        ascan_num =1
+    else:
+        ascan_num = random.randint(1, totscans-1)
+    st.session_state['ascan_num'] = ascan_num
 
 
 def generate_synthetic_data(path,binnumber):
@@ -330,6 +335,7 @@ if str(model_option) == "Generative Adversarial Network":
   st.session_state['option'] = option
   for value in finlbls:
     if str(option) == value:
+      st.session_state['model_option'] = model_option
       to_p = finlbls.index(str(option))
       to_p = to_p-1
       if to_p == -1:
@@ -356,6 +362,7 @@ if str(model_option) == "Variation Autoencoder":
   st.session_state['option'] = option
   for value in finlbls:
     if str(option) == value:
+      st.session_state['model_option'] = model_option
       to_p = finlbls.index(str(option))
       to_p = to_p-1
       if to_p == -1:
