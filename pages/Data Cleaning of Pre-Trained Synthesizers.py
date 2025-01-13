@@ -65,7 +65,7 @@ def initialize_page():
     finlbls = pd.concat([first,b])
     finlbls = finlbls.reset_index()
     finlbls = finlbls.drop('index',axis=1)
-    new_title8 = '<p style="font-family:sans-serif; color:rgb(255, 255, 255); font-size: 20px;"><b>Data Type Would You Like to View Detailed Metrics On?</b></p>'
+    new_title8 = '<p style="font-family:sans-serif; color:rgb(0, 153, 0); font-size: 20px;"><b>What Data Type Would You Like to View Detailed Metrics On?</b></p>'
     st.markdown(new_title8, unsafe_allow_html=True)
     return bins,b,first,finlbls
 
