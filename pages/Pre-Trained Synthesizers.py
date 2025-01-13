@@ -310,14 +310,14 @@ finlbls = pd.concat([first,b])
 finlbls = finlbls.reset_index()
 finlbls = finlbls.drop('index',axis=1)
 
-new_title8 = '<p style="font-family:sans-serif; color:rgb(255, 255, 255); font-size: 20px;"><b>Which Model Framework Would You Like to Use to Synthesize Your Data?</b></p>'
+new_title8 = '<p style="font-family:sans-serif; color:rgb(0, 153, 0); font-size: 20px;"><b>Which Model Framework Would You Like to Use to Synthesize Your Data?</b></p>'
 st.markdown(new_title8, unsafe_allow_html=True)
 model_option = st.selectbox(
     "",
     (["-","Variation Autoencoder","Generative Adversarial Network"]),
 )
 
-new_title8 = '<p style="font-family:sans-serif; color:rgb(255, 255, 255); font-size: 20px;"><b>Which Data Type Would You Like to Synthesize?</b></p>'
+new_title8 = '<p style="font-family:sans-serif; color:rgb(0, 153, 0); font-size: 20px;"><b>Which Data Type Would You Like to Synthesize?</b></p>'
 st.markdown(new_title8, unsafe_allow_html=True)
 option = st.selectbox(
     "",
