@@ -89,7 +89,7 @@ def initialize_page():
     st.write("")
     new_title15 = '<p style="font-family:sans-serif; color:rgb(0, 153, 0); font-size: 32px;"><b>Synthesizer Options</b></p>'
     st.markdown(new_title15, unsafe_allow_html=True)
-    new_title8 = '<p style="font-family:sans-serif; color:rgb(255, 255, 255); font-size: 20px;"><b>Enter The Number of A-scans You Want to Synthesize (Has to Be Greater Than 0):</b></p>'
+    new_title8 = '<p style="font-family:sans-serif; color:rgb(0, 153, 0); font-size: 20px;"><b>Enter The Number of A-scans You Want to Synthesize (Has to Be Greater Than 0):</b></p>'
     st.markdown(new_title8, unsafe_allow_html=True)
     return bins
 bins = initialize_page()
