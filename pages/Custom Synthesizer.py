@@ -125,7 +125,8 @@ def train_model(data,numoption):
 
 if 'ok_a' not in st.session_state:
     st.session_state.ok_a = False
-numoption = st.text_input("Input the Number of A-scans That You Want to Synthesize (must be greater than 1):", 10)
+new_title8 = '<p style="font-family:sans-serif; color:rgb(0, 153, 0); font-size: 20px;"><b>Input the Number of A-scans That You Want to Synthesize (must be greater than 1):</b></p>'
+st.markdown(new_title8, unsafe_allow_html=True)
 
 # A file uploader
 with st.expander("Upload A NPY File"):
