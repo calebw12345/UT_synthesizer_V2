@@ -14,6 +14,19 @@ st.sidebar.image('supporting_images/logo_green.png', use_column_width=True)
 
 st.title("Please Upload The Type of Data That You Want to Synthesize Here (must be in .npy file format):")
 
+#Ask user for basic hyperparameter input
+new_title20 = '<p style="font-family:sans-serif; color:rgb(0, 153, 0); font-size: 20px;"><b>Enter Hyperparameters That You Want To Use To Train Your Model:</b></p>'
+st.markdown(new_title20, unsafe_allow_html=True)
+epochs = st.text_input("", 100)
+latent_dim = st.text_input("", 100)
+lr = st.text_input("", 1e-5)
+batch_size = st.text_input("", 64)
+epochs = int(epochs)
+latent_dim = int(latent_dim)
+lr = float(lr)
+batch_size = int(batch_size)
+
+
 #Display Message
 st.write("The data you upload will be used to train a machine learning model to synthesize your data. A random A-scan produced by your synthesizer will be shown after the model has finished training.")
 
@@ -71,10 +84,10 @@ def train_model(data,numoption):
     st.write("Training in progress...")
     # Hyperparameters
     input_dim = data.shape[1]  # 1300
-    latent_dim = 100  # Latent space dimension
-    lr = 1e-5
-    batch_size = 64
-    epochs = 100
+    latent_dim = latent_dim  # Latent space dimension
+    lr = lr
+    batch_size = batch_size
+    epochs = epochs
 
     # Prepare data loader
     dataset = TensorDataset(torch.Tensor(data))
