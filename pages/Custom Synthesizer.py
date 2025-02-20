@@ -116,6 +116,7 @@ def train_model(data,numoption):
         synthetic_data = vae.decode(z).numpy()
     return synthetic_data
 
+#STREAMLIT PAGE STARTS HERE
 
 st.set_page_config(layout="wide")
 st.sidebar.image('supporting_images/logo_green.png', use_column_width=True)
@@ -149,6 +150,11 @@ with st.expander("Upload A NPY File"):
         else:
             st.success("A model has been successfully trained!")
 
+#Ask for the number of A-scans to synthesize after model is trained. These A-scans will be used for metrics production
+new_title8 = '<p style="font-family:sans-serif; color:rgb(0, 153, 0); font-size: 20px;"><b>Input the Number of A-scans That You Want to Synthesize (must be greater than 1):</b></p>'
+st.markdown(new_title8, unsafe_allow_html=True)
+numoption = st.text_input("", 10,key=4)
+
 #Ask user for basic hyperparameter input
 new_title20 = '<p style="font-family:sans-serif; color:rgb(0, 153, 0); font-size: 20px;"><b>Enter The Number of Epochs That You Want to Train Your Model To:</b></p>'
 st.markdown(new_title20, unsafe_allow_html=True)
@@ -173,8 +179,6 @@ st.write("The data you upload will be used to train a machine learning model to 
 
 if 'ok_a' not in st.session_state:
     st.session_state.ok_a = False
-new_title8 = '<p style="font-family:sans-serif; color:rgb(0, 153, 0); font-size: 20px;"><b>Input the Number of A-scans That You Want to Synthesize (must be greater than 1):</b></p>'
-st.markdown(new_title8, unsafe_allow_html=True)
 
 try:
     if len(synthetic_data) ==1:
