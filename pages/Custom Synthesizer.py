@@ -19,7 +19,7 @@ st.write("In this page you will be prompted to upload a file of a particular typ
 
 # A file uploader
 new_title19 = '<p style="font-family:sans-serif; color:rgb(0, 153, 0); font-size: 20px;"><b>Please Upload The Type of Data That You Want to Synthesize Here (must be in .npy file format):</b></p>'
-st.markdown(new_title20, unsafe_allow_html=True)
+st.markdown(new_title19, unsafe_allow_html=True)
 with st.expander("Upload A NPY File"):
     uploaded_file = st.file_uploader("", type=["npy"])
  
