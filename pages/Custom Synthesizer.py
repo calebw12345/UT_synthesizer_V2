@@ -63,11 +63,11 @@ def loss_function(recon_x, x, mean, log_var):
 def train_model(data,numoption):
     st.write("Training in progress...")
     # Hyperparameters
-    input_dim = data.shape[1]  # 1300
-    latent_dim = latent_dim  # Latent space dimension
-    lr = lr
-    batch_size = batch_size
-    epochs = epochs
+    input_dim = data.shape[1] 
+    # latent_dim = latent_dim  # Latent space dimension
+    # lr = lr
+    # batch_size = batch_size
+    # epochs = epochs
 
     # Prepare data loader
     dataset = TensorDataset(torch.Tensor(data))
