@@ -12,12 +12,14 @@ import random
 st.set_page_config(layout="wide")
 st.sidebar.image('supporting_images/logo_green.png', use_column_width=True)
 
-st.title("Custom Synthesizer Please Upload The Type of Data That You Want to Synthesize Here (must be in .npy file format):")
+st.title("Custom Synthesizer")
 
 #Page description
 st.write("In this page you will be prompted to upload a file of a particular type of UT data that you want to be synthesized. After you upload your data file, enter the hyperparameters that you want your model to use. It is recommended that you conduct your own independent research to determine which hyperparameters are best to obtain the highest accuracy for your specific dataspace. You are welcome to use the default hyperparameters, however the level of realism in the synthetic data is likely to be low.")
 
 # A file uploader
+new_title19 = '<p style="font-family:sans-serif; color:rgb(0, 153, 0); font-size: 20px;"><b>Please Upload The Type of Data That You Want to Synthesize Here (must be in .npy file format):</b></p>'
+st.markdown(new_title20, unsafe_allow_html=True)
 with st.expander("Upload A NPY File"):
     uploaded_file = st.file_uploader("", type=["npy"])
  
