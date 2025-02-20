@@ -64,10 +64,6 @@ def train_model(data,numoption):
     st.write("Training in progress...")
     # Hyperparameters
     input_dim = data.shape[1] 
-    # latent_dim = latent_dim  # Latent space dimension
-    # lr = lr
-    # batch_size = batch_size
-    # epochs = epochs
 
     # Prepare data loader
     dataset = TensorDataset(torch.Tensor(data))
