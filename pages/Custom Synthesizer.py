@@ -126,30 +126,6 @@ st.title("Custom Synthesizer")
 #Page description
 st.write("In this page you will be prompted to upload a file of a particular type of UT data that you want to be synthesized. After you upload your data file, enter the hyperparameters that you want your model to use. It is recommended that you conduct your own independent research to determine which hyperparameters are best to obtain the highest accuracy for your specific dataspace. You are welcome to use the default hyperparameters, however the level of realism in the synthetic data is likely to be low.")
 
-# A file uploader
-new_title19 = '<p style="font-family:sans-serif; color:rgb(0, 153, 0); font-size: 20px;"><b>Please Upload The Type of Data That You Want to Synthesize Here (must be in .npy file format):</b></p>'
-st.markdown(new_title19, unsafe_allow_html=True)
-with st.expander("Upload A NPY File"):
-    uploaded_file = st.file_uploader("", type=["npy"])
- 
-    if uploaded_file is not None:
-        data = np.load(uploaded_file)
-        synthetic_data = train_model(data,numoption)
-    
-
-        # Check error. 
-        if not st.session_state.ok_a:
-            with st.spinner("Checking for error log..."):
-                is_error = False
-        
-                if is_error:
-                    st.dataframe(['log A'])
-                else:
-                    st.success("A model has been successfully trained, and you have sucessfully produced "+str(len(synthetic_data))+" Synthetic A-scans!")
-                    st.session_state.ok_a = True
-        else:
-            st.success("A model has been successfully trained!")
-
 #Ask for the number of A-scans to synthesize after model is trained. These A-scans will be used for metrics production
 new_title8 = '<p style="font-family:sans-serif; color:rgb(0, 153, 0); font-size: 20px;"><b>Input the Number of A-scans That You Want to Synthesize (must be greater than 1):</b></p>'
 st.markdown(new_title8, unsafe_allow_html=True)
@@ -172,6 +148,30 @@ epochs = int(epochs)
 latent_dim = int(latent_dim)
 lr = float(lr)
 batch_size = int(batch_size)
+
+# A file uploader where the user uploads their own datafile
+new_title19 = '<p style="font-family:sans-serif; color:rgb(0, 153, 0); font-size: 20px;"><b>Please Upload The Type of Data That You Want to Synthesize Here (must be in .npy file format):</b></p>'
+st.markdown(new_title19, unsafe_allow_html=True)
+with st.expander("Upload A NPY File"):
+    uploaded_file = st.file_uploader("", type=["npy"])
+ 
+    if uploaded_file is not None:
+        data = np.load(uploaded_file)
+        synthetic_data = train_model(data,numoption)
+    
+
+        # Check error. 
+        if not st.session_state.ok_a:
+            with st.spinner("Checking for error log..."):
+                is_error = False
+        
+                if is_error:
+                    st.dataframe(['log A'])
+                else:
+                    st.success("A model has been successfully trained, and you have sucessfully produced "+str(len(synthetic_data))+" Synthetic A-scans!")
+                    st.session_state.ok_a = True
+        else:
+            st.success("A model has been successfully trained!")
 
 
 #Display Message
