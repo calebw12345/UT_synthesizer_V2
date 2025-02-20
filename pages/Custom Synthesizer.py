@@ -15,8 +15,7 @@ st.sidebar.image('supporting_images/logo_green.png', use_column_width=True)
 st.title("Custom Synthesizer Please Upload The Type of Data That You Want to Synthesize Here (must be in .npy file format):")
 
 #Ask user for basic hyperparameter input
-new_title24 = '<p style="font-family:sans-serif; color:rgb(0, 153, 0); font-size: 14px;"><b>In this page you will be prompted to upload a file of a particular type of UT data that you want to be synthesized. After you upload your data file, enter the hyperparameters that you want your model to use. It is recommended that you conduct your own independent research to determine which hyperparameters are best to obtain the highest accuracy for your specific dataspace. You are welcome to use the default hyperparameters, however the level of realism in the synthetic data is likely to be low.</b></p>'
-st.markdown(new_title24, unsafe_allow_html=True)
+st.write("In this page you will be prompted to upload a file of a particular type of UT data that you want to be synthesized. After you upload your data file, enter the hyperparameters that you want your model to use. It is recommended that you conduct your own independent research to determine which hyperparameters are best to obtain the highest accuracy for your specific dataspace. You are welcome to use the default hyperparameters, however the level of realism in the synthetic data is likely to be low.")
 new_title20 = '<p style="font-family:sans-serif; color:rgb(0, 153, 0); font-size: 20px;"><b>Enter The Number of Epochs That You Want to Train Your Model To:</b></p>'
 st.markdown(new_title20, unsafe_allow_html=True)
 epochs = st.text_input("", 100,key=0)
