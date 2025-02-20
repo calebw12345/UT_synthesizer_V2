@@ -17,10 +17,10 @@ st.title("Please Upload The Type of Data That You Want to Synthesize Here (must 
 #Ask user for basic hyperparameter input
 new_title20 = '<p style="font-family:sans-serif; color:rgb(0, 153, 0); font-size: 20px;"><b>Enter Hyperparameters That You Want To Use To Train Your Model:</b></p>'
 st.markdown(new_title20, unsafe_allow_html=True)
-epochs = st.text_input("", 100)
-latent_dim = st.text_input("", 100)
-lr = st.text_input("", 1e-5)
-batch_size = st.text_input("", 64)
+epochs = st.text_input("", 100,key=0)
+latent_dim = st.text_input("", 100,key=1)
+lr = st.text_input("", 1e-5,key=2)
+batch_size = st.text_input("", 64,key=3)
 epochs = int(epochs)
 latent_dim = int(latent_dim)
 lr = float(lr)
