@@ -12,14 +12,22 @@ import random
 st.set_page_config(layout="wide")
 st.sidebar.image('supporting_images/logo_green.png', use_column_width=True)
 
-st.title("Please Upload The Type of Data That You Want to Synthesize Here (must be in .npy file format):")
+st.title("Custom Synthesizer Please Upload The Type of Data That You Want to Synthesize Here (must be in .npy file format):")
 
 #Ask user for basic hyperparameter input
-new_title20 = '<p style="font-family:sans-serif; color:rgb(0, 153, 0); font-size: 20px;"><b>Enter Hyperparameters That You Want To Use To Train Your Model:</b></p>'
+new_title24 = '<p style="font-family:sans-serif; color:rgb(0, 153, 0); font-size: 14px;"><b>In this page you will be prompted to upload a file of a particular type of UT data that you want to be synthesized. After you upload your data file, enter the hyperparameters that you want your model to use. It is recommended that you conduct your own independent research to determine which hyperparameters are best to obtain the highest accuracy for your specific dataspace. You are welcome to use the default hyperparameters, however the level of realism in the synthetic data is likely to be low.</b></p>'
+st.markdown(new_title24, unsafe_allow_html=True
+new_title20 = '<p style="font-family:sans-serif; color:rgb(0, 153, 0); font-size: 20px;"><b>Enter The Number of Epochs That You Want to Train Your Model To:</b></p>'
 st.markdown(new_title20, unsafe_allow_html=True)
 epochs = st.text_input("", 100,key=0)
-latent_dim = st.text_input("", 100,key=1)
+new_title21 = '<p style="font-family:sans-serif; color:rgb(0, 153, 0); font-size: 20px;"><b>Enter Latent Dimension To Use:</b></p>'
+st.markdown(new_title21, unsafe_allow_html=True)
+latent_dim = st.text_input("", 40,key=1)
+new_title22 = '<p style="font-family:sans-serif; color:rgb(0, 153, 0); font-size: 20px;"><b>Enter Learning Rate To Use (used for both the generator and discriminator):</b></p>'
+st.markdown(new_title22, unsafe_allow_html=True)
 lr = st.text_input("", 1e-5,key=2)
+new_title23 = '<p style="font-family:sans-serif; color:rgb(0, 153, 0); font-size: 20px;"><b>Enter Batch Size To Use:</b></p>'
+st.markdown(new_title23, unsafe_allow_html=True)
 batch_size = st.text_input("", 64,key=3)
 epochs = int(epochs)
 latent_dim = int(latent_dim)
