@@ -14,8 +14,32 @@ st.sidebar.image('supporting_images/logo_green.png', use_column_width=True)
 
 st.title("Custom Synthesizer Please Upload The Type of Data That You Want to Synthesize Here (must be in .npy file format):")
 
-#Ask user for basic hyperparameter input
+#Page description
 st.write("In this page you will be prompted to upload a file of a particular type of UT data that you want to be synthesized. After you upload your data file, enter the hyperparameters that you want your model to use. It is recommended that you conduct your own independent research to determine which hyperparameters are best to obtain the highest accuracy for your specific dataspace. You are welcome to use the default hyperparameters, however the level of realism in the synthetic data is likely to be low.")
+
+# A file uploader
+with st.expander("Upload A NPY File"):
+    uploaded_file = st.file_uploader("", type=["npy"])
+ 
+    if uploaded_file is not None:
+        data = np.load(uploaded_file)
+        synthetic_data = train_model(data,numoption)
+    
+
+        # Check error. 
+        if not st.session_state.ok_a:
+            with st.spinner("Checking for error log..."):
+                is_error = False
+        
+                if is_error:
+                    st.dataframe(['log A'])
+                else:
+                    st.success("A model has been successfully trained, and you have sucessfully produced "+str(len(synthetic_data))+" Synthetic A-scans!")
+                    st.session_state.ok_a = True
+        else:
+            st.success("A model has been successfully trained!")
+
+#Ask user for basic hyperparameter input
 new_title20 = '<p style="font-family:sans-serif; color:rgb(0, 153, 0); font-size: 20px;"><b>Enter The Number of Epochs That You Want to Train Your Model To:</b></p>'
 st.markdown(new_title20, unsafe_allow_html=True)
 epochs = st.text_input("", 100,key=0)
@@ -148,27 +172,6 @@ if 'ok_a' not in st.session_state:
 new_title8 = '<p style="font-family:sans-serif; color:rgb(0, 153, 0); font-size: 20px;"><b>Input the Number of A-scans That You Want to Synthesize (must be greater than 1):</b></p>'
 st.markdown(new_title8, unsafe_allow_html=True)
 
-# A file uploader
-with st.expander("Upload A NPY File"):
-    uploaded_file = st.file_uploader("", type=["npy"])
- 
-    if uploaded_file is not None:
-        data = np.load(uploaded_file)
-        synthetic_data = train_model(data,numoption)
-    
-
-        # Check error. 
-        if not st.session_state.ok_a:
-            with st.spinner("Checking for error log..."):
-                is_error = False
-        
-                if is_error:
-                    st.dataframe(['log A'])
-                else:
-                    st.success("A model has been successfully trained, and you have sucessfully produced "+str(len(synthetic_data))+" Synthetic A-scans!")
-                    st.session_state.ok_a = True
-        else:
-            st.success("A model has been successfully trained!")
 try:
     if len(synthetic_data) ==1:
         ascan_num =1
