@@ -169,10 +169,7 @@ with st.expander("Upload A NPY File"):
         else:
             st.success("A model has been successfully trained!")
 
-
-#Display Message
-st.write("The data you upload will be used to train a machine learning model to synthesize your data. A random A-scan produced by your synthesizer will be shown after the model has finished training.")
-
+#Session state handling
 if 'ok_a' not in st.session_state:
     st.session_state.ok_a = False
 
