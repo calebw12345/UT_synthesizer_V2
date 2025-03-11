@@ -10,6 +10,7 @@ st.set_page_config(layout="wide")
 st.title("Metrics of Pre-Trained Synthesizers")
 st.sidebar.image('supporting_images/logo_green.png', use_column_width=True)
 
+#Initialize list of pre trained model metrics
 @st.cache_data
 def initialize_page():
     st.write("All pre-trained synthesizers in this application required data cleaning practices. Outlier removal was the primary practice. For each synthesizer that was trained, a dynamic outlier threshold (indicated by 'upper threshold' in the plots below) was set to determine which datapoints in the training data needed to be removed prior to training the synthesizer.")
@@ -57,7 +58,8 @@ def initialize_page():
         {"label": "Bin-41: 4.53% to 2.91%", "start": 24509, "end": 25508, "samples": 1000},
         {"label": "Bin-42: 2.91% to 1.29%", "start": 25509, "end": 25891, "samples": 383}
     ]
-    
+
+    #Save necessary information to call after select box
     b = pd.DataFrame(bins)
     b = b["label"]
     first = pd.DataFrame(["-"])
@@ -65,10 +67,13 @@ def initialize_page():
     finlbls = pd.concat([first,b])
     finlbls = finlbls.reset_index()
     finlbls = finlbls.drop('index',axis=1)
+
+    #Include prompt for selectbox, it just looks more appealing to separate the label from the selectbox
     new_title8 = '<p style="font-family:sans-serif; color:rgb(0, 153, 0); font-size: 20px;"><b>What Data Type Would You Like to View Detailed Metrics On?</b></p>'
     st.markdown(new_title8, unsafe_allow_html=True)
     return bins,b,first,finlbls
 
+#Initialize the page and populate the selectbox
 bins,b,first,finlbls = initialize_page()
 
 option = st.selectbox(
@@ -76,6 +81,7 @@ option = st.selectbox(
     (finlbls["label"].to_list()),
 )
 
+#Populate the rest of the page with static images from model training based on selectbox choice
 finlbls = finlbls["label"].to_list()
 to_p = finlbls.index(str(option))
 to_p = to_p-1
@@ -83,9 +89,14 @@ to_p = to_p-1
 if option == "-":
     print()
 else:
-    st.image('VAE/pre_clean_metrics/dist'+str(to_p)+'.png')
-    st.image('VAE/pre_clean_metrics/mean'+str(to_p)+'.png')
-    st.image('VAE/pre_clean_metrics/std'+str(to_p)+'.png')
-    st.image('VAE/post_clean_metrics/dist'+str(to_p)+'.png')
-    st.image('VAE/post_clean_metrics/mean'+str(to_p)+'.png')
-    st.image('VAE/post_clean_metrics/std'+str(to_p)+'.png')
+    col1, col2, col3 = st.columns(3)
+
+    with col1:
+        st.image('VAE/pre_clean_metrics/dist'+str(to_p)+'.png')
+        st.image('VAE/pre_clean_metrics/mean'+str(to_p)+'.png')
+        st.image('VAE/pre_clean_metrics/std'+str(to_p)+'.png')
+    
+    with col2:
+        st.image('VAE/post_clean_metrics/dist'+str(to_p)+'.png')
+        st.image('VAE/post_clean_metrics/mean'+str(to_p)+'.png')
+        st.image('VAE/post_clean_metrics/std'+str(to_p)+'.png')
