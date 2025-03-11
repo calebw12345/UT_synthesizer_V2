@@ -94,9 +94,15 @@ else:
     with col1:
         st.image('VAE/pre_clean_metrics/dist'+str(to_p)+'.png')
         st.image('VAE/pre_clean_metrics/mean'+str(to_p)+'.png')
-        st.image('VAE/pre_clean_metrics/std'+str(to_p)+'.png')
+        
     
     with col2:
+        st.image('VAE/pre_clean_metrics/std'+str(to_p)+'.png')
         st.image('VAE/post_clean_metrics/dist'+str(to_p)+'.png')
         st.image('VAE/post_clean_metrics/mean'+str(to_p)+'.png')
+        st.image('VAE/post_clean_metrics/std'+str(to_p)+'.png')
+
+    with col3:
+        st.image('VAE/post_clean_metrics/mean'+str(to_p)+'.png')
+        st.image('VAE/post_clean_metrics/std'+str(to_p)+'.png')
         st.image('VAE/post_clean_metrics/std'+str(to_p)+'.png')
