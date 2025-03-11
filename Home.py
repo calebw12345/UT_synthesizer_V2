@@ -15,15 +15,6 @@ st.write("This application allows you to synthesize any type of UT amplitude sca
 st.sidebar.image('supporting_images/logo_green.png', use_column_width=True)
 st.write("Interact with the tabs on the left side of the screen to explore the functionalities of this application.")
 
-col1, col2, col3 = st.columns(3)
-
-with col1:
-  st.header("A cat")
-  st.image("https://static.streamlit.io/examples/cat.jpg")
-
-with col2:
-  st.header("A dog")
-  st.image("https://static.streamlit.io/examples/dog.jpg")
 
 
 
