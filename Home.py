@@ -4,6 +4,7 @@ st.set_page_config(layout="wide")
 st.image("supporting_images/logo.png")
 
 # Main content
+st.title("NOTE: THIS WEBSITE IS CURRENTLY UNDER MAINTENANCE. All features may not be fully operational.")
 st.title("Welcome to the Ultrasonic Testing Data Synthesizer!")
 st.write("Non-Destructive Evaluation (NDE) is a continuously changing field, but one premise has held strong against the test of time; data scarcity. No matter if you are conducting research for Ultrasonic Testing, Eddycurrent Testing, Visual Testing, Radiographic Testing, or any other type of NDE method, data scarcity is always a prevalent issue. The amount of data you have available will heavily impact the product of your research whether it be training and qualification, developing new inspection methods, creating innovative NDE hardware, or developing cutting edge NDE software. In order to alleviate this industry-wide problem we have created this contribution to the initiative of using machine learning algorithms to synthesize NDE data. For this application, we have focused on Ultrasonic Testing (UT) data, however in the future other types of NDE data will be the subject of investigation.")
 new_title = '<p style="font-family:sans-serif; color:rgb(0, 153, 0); font-size: 28px;">What is the Benefit of Synthesizing UT Data?</p>'
